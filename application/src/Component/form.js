@@ -8,6 +8,7 @@ export default class Form extends React.Component {
             value: "",
             error: null,
             baseURL: 'http://localhost:5000/predict_toxicity?user_text=',
+            toxicity_text: null,
             toxicity_results: null, 
         }
 
@@ -29,7 +30,7 @@ export default class Form extends React.Component {
     onClick = e => {
         axios.get(this.state.baseURL + this.state.value, { withCredentials: true }).then(res => {
                 e.preventDefault()
-                this.setState({ toxicity_results: res.data.results })
+                this.setState({ toxicity_text: res.data.text, toxicity_results: res.data.results })
                 this.value = ""
         }
 
@@ -40,6 +41,7 @@ export default class Form extends React.Component {
     }
 
     render() {
+        const result = this.state.toxicity_results;
         if (this.state.error) {
             return <h1>An error occured.</h1>
         }
@@ -58,15 +60,19 @@ export default class Form extends React.Component {
                         <input type="submit" id="submit_" value="Send" onClick={this.onClick}/>
                     </form>
                 </div>
-
-                {this.state.toxicity_results ?
+                {result ?
                     <div id="result">
                         <h3> Toxicity results </h3> 
-                            <ul>
-                                {Object.entries(this.state.toxicity_results).map(([name, value]) => (
-                                    <li key={name}><strong>{name}</strong> : {value}</li>
-                                ))}
-                            </ul>
+                            You  have submitted the following: <strong>{this.state.toxicity_text}</strong><br/>
+                            Here is how the monitor interprets the sentence:
+                            {Object.entries(result).map(([name, value]) => (
+                            <p key={name}><strong>{name}</strong> is of {value}</p>
+                            ))}   
+                            {result['toxicity'] > 0.5 ?
+                                <p>The text submitted is <strong>Toxic</strong></p>
+                                :
+                                <p>The text submitted is <strong>not Toxic</strong></p>
+                            }
                     </div>
                     : null
                 }
