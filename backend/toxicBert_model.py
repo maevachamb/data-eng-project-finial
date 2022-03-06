@@ -10,7 +10,10 @@ def predict_text_toxicity(model, text):
     #     toxicity = 'empty ! Try again'
     # else:
     
-    keys_values = model.predict(text).items()
+    d = model.predict(text)
+    keys_values = d.items()
+    for key, value in keys_values:
+    	d[key] = round(value, 2)
     toxicity = {str(key): str(value) for key, value in keys_values}
         
     return {"text": text, "results": toxicity}
