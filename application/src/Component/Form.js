@@ -51,7 +51,7 @@ export default class Form extends React.Component {
                 <div className="App">
                     <form id="regForm" onSubmit={this.handleSubmit}>
                         <h1 id="register">The Toxicity Monitor</h1>
-                        <div class="tab">
+                        <div className="tab">
                             <h4>The Toxicity Monitor is a toxicity analysis application,which, given a piece of text, is able to determine if the text is toxic or not.
                             <br/><br/><b>Try it by writing something below.</b></h4>
                             <input id = "user_text" type="text" placeholder="Please write something here..." value={this.state.value} onChange={this.handleChange} name="user_text"/>
