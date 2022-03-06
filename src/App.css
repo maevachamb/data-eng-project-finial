@@ -1,0 +1,69 @@
+.App {
+  text-align: center;
+  background: #eee;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 0px auto;
+  margin-top : 25px;
+  font-family: Raleway;
+  padding: 40px;
+  border-radius: 10px;
+  width: 40%;
+}
+
+#register {
+  color: #2a4f798c;
+  font-weight: bolder;
+  margin-bottom:10%;
+}
+
+#submit_{
+  width: 50%;
+  text-align: center;
+  margin-top: 5%;
+}
+#submit_:active{background-color:#2a4f798c;}
+
+#result {
+  border-radius: 25px;
+  background: #7373732f;
+  padding: 20px;
+  margin: auto;
+  margin-top : 25px;
+  width: 500px;
+  height: auto;
+}
+
+body {
+  background: #eee
+}
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+}
+h4 {
+  text-align: left;
+  font-weight: lighter;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+  border-radius: 10px;
+  -webkit-appearance: none
+}
+
+.tab input:focus {
+  border: 1px solid #2a4f798c !important;
+  outline: none
+}
+
+.tab {
+  display: inline;
+}
